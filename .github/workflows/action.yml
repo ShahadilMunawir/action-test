@@ -32,5 +32,6 @@ jobs:
             cd /root/code/
             git clone https://github.com/ShahadilMunawir/action-test.git
             cd action-test
+            apt install npm -y
             npm i
             npm run build
