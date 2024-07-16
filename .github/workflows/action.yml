@@ -20,3 +20,17 @@ jobs:
       - run: npm i
       - run: npm run lint
       - run: npm run build
+
+      - name: 'Deploy'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            mkdir -p /root/code/
+            cd /root/code/
+            git clone https://github.com/ShahadilMunawir/action-test.git
+            cd action-test
+            npm i
+            npm run build
